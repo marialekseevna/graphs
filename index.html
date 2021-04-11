@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Graphs</title>
+  </head>
+  <body>
+    <div class="tabs">
+      <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked />
+      <label for="tab-btn-1">A</label>
+      <input type="radio" name="tab-btn" id="tab-btn-2" value="" />
+      <label for="tab-btn-2">B</label>
+      <input type="radio" name="tab-btn" id="tab-btn-3" value="" />
+      <label for="tab-btn-3">C</label>
+      <input type="radio" name="tab-btn" id="tab-btn-4" value="" />
+      <label for="tab-btn-4">D</label>
+      <input type="radio" name="tab-btn" id="tab-btn-5" value="" />
+      <label for="tab-btn-5">E</label>
+      <input type="radio" name="tab-btn" id="tab-btn-6" value="" />
+      <label for="tab-btn-6">F</label>
+      <input type="radio" name="tab-btn" id="tab-btn-7" value="" />
+      <label for="tab-btn-7">L</label>
+
+      <div id="content-1">
+        <h3>По заданной квадратной матрице n×n из нулей и единиц определите, может ли данная матрица быть матрицей смежности простого неориентированного графа.</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите размеры матрицы</td>
+            <td>
+              <select id="sizeA">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createMatrixA('matrixA')">Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="matrixA" colspan="1"></div><br>
+        <div><button class = "button" onclick="unorientedGraph()">Вычислить</button></div>
+        <p><div id="answerA"></div></p>
+        <div id="informations">
+          <p>Граф называется <b>простым</b>, если он не содержит петель и кратных ребер. Для того чтобы матрица смежности принадлежала неориентированному графу, необходимо чтобы она была симметрична относительно главной диагонали.</p>
+          <p><b>Пример:</b></p>
+          <p>0 1 1</p>
+          <p>1 0 1</p>
+          <p>1 1 0</p>
+          <p>Приведенная матрица может быть матрицей смежности простого неориентированного графа</p>
+        </div>
+      </div>
+      <div id="content-2">
+        <h3>По заданной матрице смежности неориентированного графа определите, содержит ли он петли.</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите размеры матрицы</td>
+            <td>
+              <select id="sizeB">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createMatrixB('matrixB')"> Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="matrixB" colspan="1"></div><br>
+        <div><button class = "button" onclick="matrixLoops()">Вычислить</button></div>
+        <p><div id="answerB"></div></p>
+        <div id = "informations">
+          <p><b>Матрица смежности</b></p>
+          <p>Граф хранится в виде квадратной таблицы, со стороной, равной количеству вершин. В пересечениистроки i и столбца j находится 1, если дуга (ребро) между вершинами i и j есть и 0, если нет. Таким образом, описание графа без петель содержит нули на главной диагонали, а матрица неориентированного графа относительно нее симметрична.</p>
+          <p><b>Граф, или неориентированный граф G</b> - это упорядоченная пара (V, E), для которой выполнены следующие условия: </p>
+          <p>V - это непустое множество вершин или узлов;</p> 
+          <p>E - это множество пар (в случае неориентированного графа неупорядоченных) вершин, называемых рёбрами.</p>
+          <p><b>Петля</b> - это дуга, начальная и конечная вершина которой совпадают</p>
+          <p><b>Пример:</b></p>
+          <p>0 1 0</p>
+          <p>1 1 1</p>
+          <p>0 1 0</p>
+          <p>Да</p>
+        </div>
+      </div>
+      <div id="content-3">
+        <h3>Простой неориентированный граф задан матрицей смежности. Найдите количество ребер в графе.</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите размеры матрицы</td>
+            <td>
+              <select id="sizeC">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createMatrixC('matrixC')">Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="matrixC" colspan="1"></div><br>
+        <div><button class="button" onclick="matrixEdges()">Вычислить</button></div>
+        <p><div id="answerC"></div></p>
+        <div id = "informations">
+          <p><b>Простой граф</b> - граф без кратных ребер и петель.</p>
+          <p><b>Неориентированным графом G</b> называется пара G=(V,E), где V — множество вершин, а E⊂{{v,u}:v,u∈V} — множество рёбер.</p>
+          <p><b>Ребром</b> в неориентированном графе называют неупорядоченную пару вершин {v,u}∈E.</p>
+          <p><b>Пример:</b></p>
+          <p>0 1 1</p>
+          <p>1 0 1</p>
+          <p>1 1 0</p>
+          <p>Приведенная матрица содержит 3 ребра</p>
+        </div>
+      </div>
+      <div id="content-4">
+        <h3>Ориентированный граф задан матрицей смежности. Найдите количество ребер в графе.</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите размеры матрицы</td>
+            <td>
+              <select id="sizeD">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createMatrixD('matrixD')">Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="matrixD" colspan="1"></div><br>
+        <div><button class = "button" onclick="oMatrixEdges()">Вычислить</button></div>
+        <p><div id="answerD"></div></p>
+        <div id = "informations">
+          <p>Поскольку граф ориентированный, то количество ребер равно числу единиц в матрице смежности. С другой стороны, количество ребер равно сумме всех чисел матрицы смежности.   </p>
+          <p><b>Ориентированным графом G</b> Ориентированным графом (англ. directed graph) G называется пара G=(V,E), где V — множество вершин (англ. vertices), а E⊂V×V — множество рёбер.</p>
+          <p><b>Ребром</b> ориентированного графа называют упорядоченную пару вершин (v,u)∈E.</p>
+          <p><b>Пример:</b></p>
+          <p>0 1 1</p>
+          <p>1 0 1</p>
+          <p>0 1 1</p>
+          <p>Приведенная матрица содержит 6 ребер</p>
+        </div>
+      </div>
+      <div id="content-5">
+        <h3>Простой неориентированный граф задан матрицей смежности, выведите его представление в виде списка ребер.</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите размеры матрицы</td>
+            <td>
+              <select id="sizeE">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createMatrixE('matrixE')">Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="matrixE" colspan="1"></div><br>
+        <div><button class="button" onclick="matrixToEdges()">Вычислить</button></div>
+        <p><div id="answerE"></div></p>
+        <div id = "informations">
+          <p><b>Простой граф</b> - граф без кратных ребер и петель.</p>
+          <p><b>Неориентированным графом G</b> называется пара G=(V,E), где V — множество вершин, а E⊂{{v,u}:v,u∈V} — множество рёбер.</p>
+          <p><b>Ребром</b> в неориентированном графе называют неупорядоченную пару вершин {v,u}∈E.</p>
+          <p><b>Пример:</b></p>
+          <p>0 1 1</p>
+          <p>1 0 1</p>
+          <p>1 1 0</p>
+          <p>Ответ:</p>
+          <p>1 2</p>
+          <p>1 3</p>
+          <p>2 3</p>
+        </div>
+      </div>
+      <div id="content-6">
+        <h3>Простой неориентированный граф задан списком ребер, выведите его представление в виде матрицы смежности.</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите число ребер</td>
+            <td>
+              <select id="sizeF">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createEdgesF('edgesF')">Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="edgesF" colspan="1"></div><br>
+        <div><button class="button" onclick="edgeToMatrix()">Вычислить</button></div>
+        <p><div id="answerF"></div></p>
+        <div id = "informations">
+          <p><b>Простой граф</b> - граф без кратных ребер и петель.</p>
+          <p><b>Неориентированным графом G</b> называется пара G=(V,E), где V — множество вершин, а E⊂{{v,u}:v,u∈V} — множество рёбер.</p>
+          <p><b>Ребром</b> в неориентированном графе называют неупорядоченную пару вершин {v,u}∈E.</p>
+          <p><b>Пример:</b></p>
+          <p>1 2</p>
+          <p>2 3</p>
+          <p>1 3</p>
+          <p>Ответ:</p>
+          <p>0 1 1</p>
+          <p>1 0 1</p>
+          <p>1 1 0</p>
+        </div>
+      </div>
+      <div id="content-7">
+        <h3>Неориентированный граф задан матрицей смежности. Найдите степени всех вершин графа</h3>
+        <table border="1">
+          <tr>
+            <td>Выберите размеры матрицы</td>
+            <td>
+              <select id="sizeL">
+                <option value="2">2</option>
+                <option selected="selected" value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </td>
+            <td>
+              <button onclick="createMatrixL('matrixL')">Создать матрицу</button>
+            </td>
+          </tr>
+        </table>
+        <div id="matrixL" colspan="1"></div><br>
+        <div><button class="button" onclick="powMatrix()">Вычислить</button></div>
+        <p><div id="answerL"></div></p>
+        <div id = "informations">
+          <p><b>Неориентированным графом G</b> называется пара G=(V,E), где V — множество вершин, а E⊂{{v,u}:v,u∈V} — множество рёбер.</p>
+          <p><b>Ребром</b> в неориентированном графе называют неупорядоченную пару вершин {v,u}∈E.</p>
+          <p><b>Степень или валентность вершины графа</b> — количество рёбер графа G, инцидентных вершине x. При подсчёте степени ребро-петля учитывается дважды.</p>
+          <p><b>Пример:</b></p>
+          <p>0 1 0</p>
+          <p>1 0 1</p>
+          <p>0 1 0</p>
+          <p>Ответ:</p>
+          <p>1</p>
+          <p>2</p>
+          <p>1</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <script src="./js/a.js"></script>
+    <script src="./js/b.js"></script>
+    <script src="./js/c.js"></script>
+    <script src="./js/d.js"></script>
+    <script src="./js/e.js"></script>
+    <script src="./js/f.js"></script>
+    <script src="./js/l.js"></script>
+  </body>
+</html>
